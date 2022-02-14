@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +31,11 @@ public class SpringBootApplicationPerson {
         getPeople.add(suraya);
         getPeople.add(suad);
         getPeople.add(sarina);
+    }
+
+    @GetMapping("allPeople")
+    public List<Person> getAllPeople(){ //method to return all people from getPeople list
+        return getPeople;
     }
 
     @GetMapping("people/{id}") //providing the path http://localhost:8080/people/{id} using annotation

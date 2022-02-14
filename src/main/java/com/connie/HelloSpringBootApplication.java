@@ -36,7 +36,7 @@ public class HelloSpringBootApplication {
 	}
 
 
-	@GetMapping(path = "people") //create path localhost:8080/people
+	@GetMapping(path = "peep") //create path localhost:8080/people
 	List<Person> getPerson(){ //list that returns person class
 		return List.of(
 				new Person("Alex", 24),

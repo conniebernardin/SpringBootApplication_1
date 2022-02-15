@@ -7,6 +7,7 @@ public class CarService {
     public CarService(CarDAO carDAO){
         this.carDAO = carDAO;
     }
+
     public void registerNewCar(Car car){
    //business logic
     if(car.getPrice() <= 0){

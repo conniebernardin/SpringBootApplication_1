@@ -12,7 +12,7 @@ public class FakeCarDataAccessService implements CarDAO{
         this.carList = new ArrayList<>();
     }
 
-    @Override
+    @Override //overriding method from interface level so method works with this type of database (in this case: a list)
     public int insertCar(Car car) {
         carList.add(car); //adds car to list cars
         return 1;

@@ -13,6 +13,7 @@ public class SpringBootApplicationCounter {
 
         }
     // create a variable static int count = 0;
+    //created outside of main, so it can be accessed across other methods
          int count =0;
 
     // Create a method to get current count. i.e localhost:8080/current-count

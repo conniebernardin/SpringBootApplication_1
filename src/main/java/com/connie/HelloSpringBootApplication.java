@@ -3,6 +3,7 @@ package com.connie;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,31 +37,43 @@ public class HelloSpringBootApplication {
 	}
 
 
-	@GetMapping(path = "peep") //create path localhost:8080/people
+	@GetMapping(path = "students") //create path localhost:8080/people
 	List<Person> getPerson(){ //list that returns person class
 		return List.of(
-				new Person("Alex", 24),
-				new Person("Connie", 22));
+				new Person("Alex", 22, true, List.of("carrots", "corn")),
+				new Person("Wendy", 14, false, List.of("beans", "peas", "broccoli")));
+	}
+
+	@PostMapping(path = "students") //path can be the same as long as the request method is different
+	void addPerson(SpringBootApplicationPerson.Person person){
+		System.out.println(person);
 	}
 
 	//create person class
 	static class Person {
-		public Person(String name, int age) {
+		public Person(String name, int age, Boolean isAdult, List<String> favouriteFood) {
 			this.name = name;
 			this.age = age;
+			this.isAdult = isAdult;
+			this.favouriteFood = favouriteFood;
 		}
+
+		private String name;
+		private int age;
+		private boolean isAdult;
+		private List<String> favouriteFood;
 
 		@Override
 		public boolean equals(Object o) {
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
 			Person person = (Person) o;
-			return age == person.age && Objects.equals(name, person.name);
+			return age == person.age && isAdult == person.isAdult && Objects.equals(name, person.name) && Objects.equals(favouriteFood, person.favouriteFood);
 		}
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(name, age);
+			return Objects.hash(name, age, isAdult, favouriteFood);
 		}
 
 		@Override
@@ -68,11 +81,28 @@ public class HelloSpringBootApplication {
 			return "Person{" +
 					"name='" + name + '\'' +
 					", age=" + age +
+					", isAdult=" + isAdult +
+					", favouriteFood=" + favouriteFood +
 					'}';
 		}
 
-		private String name;
-		private int age;
+
+
+		public boolean isAdult() {
+			return isAdult;
+		}
+
+		public void setAdult(boolean adult) {
+			isAdult = adult;
+		}
+
+		public List<String> getFavouriteFood() {
+			return favouriteFood;
+		}
+
+		public void setFavouriteFood(List<String> favouriteFood) {
+			this.favouriteFood = favouriteFood;
+		}
 
 		public String getName() {
 			return name;

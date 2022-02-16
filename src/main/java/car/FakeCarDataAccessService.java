@@ -1,11 +1,12 @@
 package car;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component // instantiates class so it is available in heap. process of dependency injection
+@Repository("Fake") // instantiates class so it is available in heap. process of dependency injection. gives it name fake
 public class FakeCarDataAccessService implements CarDAO{//class to access data. implements DAO.
 
     private List<Car> carList;

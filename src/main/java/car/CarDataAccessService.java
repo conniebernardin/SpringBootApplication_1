@@ -1,8 +1,15 @@
 package car;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public class CarDataAccessService implements CarDAO{
+import static car.Brand.HONDA;
+
+@Repository("postgres")
+
+public class CarDataAccessService implements CarDAO{ //fake database
     @Override
     public int insertCar(Car car) {
         return 0;
@@ -25,6 +32,6 @@ public class CarDataAccessService implements CarDAO{
 
     @Override
     public List<Car> selectCarAllCars() {
-        return null;
+        return List.of(new Car(1,HONDA,12000.0, "BNTA"));
     }
 }

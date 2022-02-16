@@ -1,5 +1,6 @@
 package car;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public class CarService {
     private CarDAO carDAO; //create instance of DAO so anything that implements that interface can be accessed
 
 
-    public CarService(CarDAO carDAO){
+    public CarService(@Qualifier("postgres") CarDAO carDAO){ //@qualifier tells you which one to inject
         this.carDAO = carDAO;
     }
 

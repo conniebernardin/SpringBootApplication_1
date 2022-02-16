@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 //interface is a specification with abstract methods
 
-@Component
 public interface CarDAO {
     int insertCar(Car car);
     int deleteCar(Integer id);

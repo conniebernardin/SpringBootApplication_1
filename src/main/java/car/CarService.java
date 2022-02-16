@@ -1,8 +1,11 @@
 package car;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component //instantiates service in heap
+import java.util.List;
+
+@Service //instantiates service in heap
 public class CarService {
 
     private CarDAO carDAO; //create instance of DAO so anything that implements that interface can be accessed
@@ -21,5 +24,9 @@ public class CarService {
     if (result != 1){
         throw new IllegalStateException("Could not save car.");
     }
+    }
+
+    public List<Car> getCars(){
+        return carDAO.selectCarAllCars();
     }
 }

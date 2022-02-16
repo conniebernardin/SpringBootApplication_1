@@ -1,12 +1,10 @@
 package car;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController //annotation for all api layers
-@RequestMapping("cars") //allows you to say localhost/car
+//@RequestMapping("cars") //allows you to say localhost/car
 public class CarController {
 
     private CarService carService;
@@ -15,8 +13,13 @@ public class CarController {
         this.carService = carService;
     }
 
-    @PostMapping
+    @PostMapping(path = "cars")
     public void addCar(@RequestBody Car car){
         carService.registerNewCar(car);
+    }
+
+    @GetMapping(path = "cars")
+    public List<Car> getCar(){
+       return carService.getCars();
     }
 }

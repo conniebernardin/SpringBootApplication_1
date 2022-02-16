@@ -1,8 +1,12 @@
 package car;
 
+import org.springframework.stereotype.Component;
+
+@Component //instantiates service in heap
 public class CarService {
 
     private CarDAO carDAO; //create instance of DAO so anything that implements that interface can be accessed
+
 
     public CarService(CarDAO carDAO){
         this.carDAO = carDAO;

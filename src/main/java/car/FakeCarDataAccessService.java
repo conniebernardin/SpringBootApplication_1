@@ -1,10 +1,12 @@
 package car;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
-//class to access data. implements DAO.
-public class FakeCarDataAccessService implements CarDAO{
+@Component // instantiates class so it is available in heap. process of dependency injection
+public class FakeCarDataAccessService implements CarDAO{//class to access data. implements DAO.
 
     private List<Car> carList;
 
